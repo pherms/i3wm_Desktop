@@ -285,5 +285,4 @@ exec /usr/bin/steam-native
 exec /usr/bin/firefox
 exec /usr/bin/google-chrome-stable
 exec_always /usr/bin/nextcloud --background
-exec /usr/bin/transmission-gtk
 exec /usr/bin/signal-desktop --start-in-tray
