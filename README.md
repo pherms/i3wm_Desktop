@@ -7,3 +7,4 @@ This config is build for a 2 monitor setup and was compiled from different sourc
 Work in progress:
 - get the bandwith in i3blocks working again
 - applications like keepass have some weird way of rendering fonts. They look jagged edges. This needs to be fixed as well.
+- add conky perhaps
