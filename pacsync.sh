@@ -13,6 +13,8 @@ then
 fi
 
 pacman -Quq | wc -l >> $updatefile
-cower -u | wc -l >> $aurfile
+#cower -u | wc -l >> $aurfile
+yay -aQu | wc -l >> $aurfile
+
 
 echo "Pacman: "$(exec cat $updatefile)" | AUR: "$(exec cat $aurfile)

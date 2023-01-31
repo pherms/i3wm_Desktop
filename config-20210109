@@ -12,24 +12,14 @@
 set $mod Mod4
 
 #Set colors
-set $bg-color			#021336
-set $inactive-bg-color		#010816
+set $bg-color			#2f343f
+set $inactive-bg-color		#2f343f
 set $text-color			#f3f4f5
 set $inactive-text-color	#676e7d
 set $urgent-bg-color		#e53935
-set $active-bordercolor		#021336
+set $active-bordercolor		#2f343f
 set $indicator			#00ff00
-set $child-border		#010816
-
-## original colour scheme
-# set $bg-color			#2f343f
-# set $inactive-bg-color		#2f343f
-# set $text-color			#f3f4f5
-# set $inactive-text-color	#676e7d
-# set $urgent-bg-color		#e53935
-# set $active-bordercolor		#2f343f
-# set $indicator			#00ff00
-# set $child-border		#2f343f
+set $child-border		#2f343f
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -119,14 +109,14 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: System "
-set $ws2 "2: Internet "
+set $ws2 "2: Internet "
 set $ws3 "3: Office "
 set $ws4 "4: Fotografie: "
 set $ws5 "5: Games "
 set $ws6 "6: Media "
 set $ws7 "7: Clients "
 set $ws8 "8: Virtual Machines "
-set $ws9 "9: Programming "
+set $ws9 "9: Trading "
 
 # assign workspaces to monitors
 workspace $ws1 output DisplayPort-0
@@ -163,7 +153,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 #assign programs to workspaces
 assign [class="Rhythmbox"] $ws6
-assign [class="firefox"] $ws2
+assign [class="Firefox"] $ws2
 assign [class="Google-chrome"] $ws1
 assign [class="dolphin"] $ws1
 assign [class="Rambox"] $ws7
@@ -176,7 +166,6 @@ assign [class="^libreoffice-startcenter$" instance="^LibreOffice$"] $ws3
 #assign [class="libreoffice-calc$" instance="LibreOffice$"] $ws3
 #assign [class="libreoffice-calc"] $ws3
 #assign [class="libre"] $ws3
-assign [class="Code"] $ws9
 assign [class="(?i)libreoffice-writer$"] $ws3
 assign [class="(?i)soffice"] $ws3
 assign [class="(?i)libreoffice-calc"] $ws3
@@ -199,7 +188,6 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [title="Open With"] floating enable
-for_window [title="Volumeregeling"] floating enable
 
 #prevent focus stealing
 for_window [instance="^Microsoft Teams - Preview"] no_focus
@@ -264,12 +252,10 @@ bar {
         status_command i3blocks -c /home/pascal/.config/i3/i3blocks.conf
 	tray_output none
 	colors {
-		#background $bg-color
-		background $inactive-bg-color
+		background $bg-color
 		separator #757575
 		#			border			background		text
-		focused_workspace	$bg-color	$bg-color		$text-color
-		active_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+		focused_workspace	$active-bordercolor	$bg-color		$text-color
 		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
 		urgent_workspace		$urgent-bg-color	$urgent-bg-color	$text-color
 		}
@@ -283,7 +269,7 @@ bar {
 	tray_output DisplayPort-0
 	workspace_buttons no
 	colors {
-		background $inactive-bg-color
+		background $bg-color
 		separator #757575
 		#			border			background		text
 		focused_workspace	$bg-color		$bg-color		$text-color
@@ -296,28 +282,27 @@ bar {
 for_window [instance="origin.exe"] floating enable
 
 #exec QT_QPA_PLATFORMTHEME="kde" dolphin
-exec dbus-launch dolphin
+exec dolphin
 exec xset s off
 exec xset -dpms
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec_always --no-startup-id feh --bg-scale /home/pascal/Afbeeldingen/wallpaper/city-road-wallpapers.jpg
 #exec_always --no-startup-id xrandr --output DisplayPort-0 --off --output DVI-1 --mode 1680x1050 --pos 1920x0 --rotate normal --output HDMI-0 --off
-exec --no-startup-id picom --config ~/.config/i3/compton/compton.conf
+#exec_always --no-startup-id compton -f
+#exec --no-startup-id compton --config ~/.config/i3/compton/compton.conf --blur-method kawase --blur-strength 10
 exec_always --no-startup-id /home/pascal/UMS/UMS.sh
 exec_always /usr/bin/nm-applet
 exec_always /opt/dropbox/dropbox
-#exec /usr/bin/boincmgr
+exec /usr/bin/boincmgr
 exec_always /usr/local/bin/steam-preload %U
 #exec_always /usr/bin/shutter --min_at_startup
-#exec /usr/bin/teamspeak3
-exec_always dbus-launch /opt/eset/esets/bin/esets_gui
+exec /usr/bin/teamspeak3
+exec_always /opt/eset/esets/bin/esets_gui
 exec_always python /opt/SABnzbd/SABnzbd.py -f /home/pascal/.sabnzbd.ini -d
 #exec_always /usr/bin/deluge
 exec_always /usr/bin/qbittorrent
-exec dbus-launch /usr/bin/steam-runtime
+exec /usr/bin/steam-native
 exec /usr/bin/firefox
 #exec /usr/bin/google-chrome-stable
 exec_always /usr/bin/nextcloud --background
-#exec /usr/bin/signal-desktop --start-in-tray
-exec_always /usr/bin/volumeicon
-exec /opt/fluent-reader/fluent-reader
+exec /usr/bin/signal-desktop --start-in-tray
