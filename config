@@ -129,15 +129,16 @@ set $ws8 "8: Virtual Machines "
 set $ws9 "9: Programming "
 
 # assign workspaces to monitors
-workspace $ws1 output DisplayPort-0
-workspace $ws2 output DisplayPort-1
-workspace $ws3 output DisplayPort-0
-workspace $ws4 output DisplayPort-0
-workspace $ws5 output DisplayPort-0
-workspace $ws6 output DisplayPort-0
-workspace $ws7 output DisplayPort-1
-workspace $ws8 output DisplayPort-0
-workspace $ws9 output DisplayPort-0
+
+workspace $ws1 output DP-4
+workspace $ws2 output DP-2
+workspace $ws3 output DP-4
+workspace $ws4 output DP-4
+workspace $ws5 output DP-4
+workspace $ws6 output DP-4
+workspace $ws7 output DP-2
+workspace $ws8 output DP-4
+workspace $ws9 output DP-4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -279,8 +280,8 @@ bar {
 
 bar {
 	id bar-bottom
-	output DisplayPort-0
-	tray_output DisplayPort-0
+	output DP-4
+	tray_output DP-4
 	workspace_buttons no
 	colors {
 		background $inactive-bg-color
